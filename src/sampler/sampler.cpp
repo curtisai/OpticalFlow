@@ -1,25 +1,14 @@
-// =====================================================================================
-//
-//       Filename:  main.cpp
-//
-//    Description:  just a main
-//
-//        Version:  1.0
-//        Created:  08/13/2017 00:52:39
-//       Revision:  none
-//       Compiler:  g++
-//
-//         Author:  curtisai, notadish@gmail.com
-//   Organization:  
-//
-// =====================================================================================
+#include "sampler.h"
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/opencv.hpp>
 #include <string>
 
-static void drawOptFlowMap(const cv::Mat& flow, cv::Mat& cflowmap, int step, double, const cv::Scalar& color)
+namespace FTL
+{
+void drawOptFlowMap(const cv::Mat& flow, cv::Mat& cflowmap, int step, double, const cv::Scalar& color)
 {
 	for(int y = 0; y < cflowmap.rows; y += step)
 	{
@@ -32,9 +21,8 @@ static void drawOptFlowMap(const cv::Mat& flow, cv::Mat& cflowmap, int step, dou
 	}
 }
 
-int main(int argc, char** argv)
+void Open(std::string filename, int skip)
 {
-	std::string filename = "DJI_0032.MOV";
 	cv::VideoCapture capture(filename);
 	if( !capture.isOpened() )
 		throw "Error when reading steam_avi";
@@ -47,7 +35,7 @@ int main(int argc, char** argv)
 	{
 		capture >> frame;
 		++count;
-		if ( count % 3 )
+		if ( count % skip )
 		{
 			continue;
 		}
@@ -64,4 +52,8 @@ int main(int argc, char** argv)
 			break;
 		std::swap(prevgray, gray);
 	}
+	return;
 }
+
+
+} // end of namespace FTL
