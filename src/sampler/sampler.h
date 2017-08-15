@@ -7,6 +7,7 @@ namespace FTL
 {
 
 void Open(std::string filename, int skip = 3);
+void OpenDepth(std::string filename, int skip = 3, int position = 450);
 
 }
 

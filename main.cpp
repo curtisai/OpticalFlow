@@ -17,6 +17,9 @@
 
 int main(int argc, char** argv)
 {
-	FTL::Open("../DJI_0032.MOV");
+	FTL::Open("../videoplayback.mp4", 10);
+	// FTL::Open("../overheadScanLow.mov", 5);
+	// FTL::OpenDepth("../DJI_0032.MOV");
+	// FTL::OpenDepth("../overheadScanLow.mov", 10, 270);
 	return 0;
 }
