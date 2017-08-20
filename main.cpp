@@ -13,10 +13,12 @@
 //   Organization:  
 //
 // =====================================================================================
+
+ 
 #include "src/sampler/sampler.h"
 
 int main(int argc, char** argv)
 {
-	FTL::Open("../DJI_0032.MOV");
+	FTL::Open("../videoplayback.mp4", 10);
 	return 0;
 }
